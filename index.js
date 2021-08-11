@@ -5,8 +5,6 @@ const util = require('util');
 const generatorMarkdown = require('util/generateMarkdown');
 
 
-const writeFileAsync = util.promisify(fs.writeFile);
-
 
 // // TODO: Create an array of questions for user input
 const questions = ([
@@ -21,10 +19,10 @@ const questions = ([
         message: 'Enter the description of your Project.',
         },
         {
-            type: 'input',
-            name: 'description',
-            message: 'Enter the description of your Project.',
-            },
+        type: 'input',
+        name: 'description',
+        message: 'Enter the description of your Project.',
+        },
         {
         type: 'input',
         name: 'Table of Contents',
@@ -57,24 +55,24 @@ const questions = ([
         name: "license"
         },
         {
-            type: 'input',
-            name: 'credit',
-            message: 'Whose Credit is this work?',
+        type: 'input',
+        name: 'credit',
+        message: 'Whose Credit is this work?',
         },
         {
-            type: 'input',
-            name: 'questions',
-            message: 'Contact info for inquiries.',
+        type: 'input',
+        name: 'questions',
+        message: 'Contact info for inquiries.',
         },
         {
-            type: 'input',
-            name: 'username',
-            message: 'What is your GitHub username?',
+        type: 'input',
+        name: 'username',
+        message: 'What is your GitHub username?',
         },
         {
-            type: 'input',
-            name: 'email',
-            message: 'What is your email address?',
+        type: 'input',
+        name: 'email',
+        message: 'What is your email address?',
         },
 
     ]);
@@ -83,10 +81,18 @@ const questions = ([
 
 // // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    fs.watchFile(fileName, data) {
-
+    fs.writeFile(fileName, data, function(err) {
+        console.log(fileName)
+        console.log(data)
+        if (err) {
+            return console.log(err) }
+            else {
+                console.log("success")
+            }
+        })
     }
-}
+
+
 
 // // TODO: Create a function to initialize app
 function init() {}
