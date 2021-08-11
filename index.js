@@ -2,7 +2,8 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const util = require('util');
-const generatorMarkdown = require('util/generateMarkdown');
+
+const generateMarkdown = require('./generateMarkdown');
 
 
 
@@ -20,13 +21,13 @@ const questions = ([
         },
         {
         type: 'input',
-        name: 'description',
-        message: 'Enter the description of your Project.',
+        name: 'Table of Contents',
+        message: 'Table of Contents',
         },
         {
         type: 'input',
-        name: 'Table of Contents',
-        message: 'Table of Contents',
+        name: 'installation',
+        message: 'What does the user need to install to run this app?',
         },
         {
         type: 'input',
@@ -95,7 +96,13 @@ function writeToFile(fileName, data) {
 
 
 // // TODO: Create a function to initialize app
-function init() {}
+function init() {
+    inquirer.prompt(questions)
+    .then(function(data){
+        writeToFile("README.md", generateMarkdown(data));
+        console.log(data)
+    })
+}
 
 // // Function call to initialize app
 init();
