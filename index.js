@@ -48,12 +48,9 @@ const questions = ([
         type: 'checkbox',
         message: 'what are the Test Instructions?',
         choices: [
-            "Apache",
             "MIT",
-            "ISC",
-            "GNU GPLv3"
-        ],
-        name: "license"
+            "GNU General Public License 3.0"],
+        name: "license",
         },
         {
         type: 'input',
@@ -77,10 +74,9 @@ const questions = ([
         },
 
     ]);
-    
 
 
-// // TODO: Create a function to write README file
+
 function writeToFile(fileName, data) {
     fs.writeFile(fileName, data, function(err) {
         console.log(fileName)
@@ -95,7 +91,7 @@ function writeToFile(fileName, data) {
 
 
 
-// // TODO: Create a function to initialize app
+
 function init() {
     inquirer.prompt(questions)
     .then(function(data){
@@ -104,5 +100,5 @@ function init() {
     })
 }
 
-// // Function call to initialize app
+
 init();
